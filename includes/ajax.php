@@ -1,44 +1,57 @@
 <?php
-add_action('wp_ajax_my_ajax_form','plugin_ajax_action');
-function plugin_ajax_action(){
-    if(isset($_POST['action']) && isset($_POST['widget_uid'])){
-        update_option('widget_uid',sanitize_text_field($_POST['widget_uid']));
+add_action('wp_ajax_save_ygc_settings_ajax', 'ygc_save_settings_ajax');
 
-        // Save chatbot admin option
-        if(isset($_POST['chatbot_admin_enabled'])){
-            update_option('chatbot_admin_enabled', $_POST['chatbot_admin_enabled'] === '1' ? '1' : '0');
-        } else {
-            update_option('chatbot_admin_enabled', '0');
-        }
-
-        // Save search widget options if provided
-        if(isset($_POST['search_widget_enabled'])){
-            update_option('search_widget_enabled', $_POST['search_widget_enabled'] === '1' ? '1' : '0');
-        } else {
-            update_option('search_widget_enabled', '0');
-        }
-
-        if(isset($_POST['search_widget_id'])){
-            update_option('search_widget_id', sanitize_text_field($_POST['search_widget_id']));
-        }
-
-        if(isset($_POST['search_widget_type'])){
-            $allowed_types = array('floating', 'inplace', 'click');
-            $widget_type = sanitize_text_field($_POST['search_widget_type']);
-            if(in_array($widget_type, $allowed_types)){
-                update_option('search_widget_type', $widget_type);
-            }
-        }
-
-        if(isset($_POST['search_show_in_admin'])){
-            update_option('search_show_in_admin', $_POST['search_show_in_admin'] === '1' ? '1' : '0');
-        } else {
-            update_option('search_show_in_admin', '0');
-        }
-
-        echo "success";
-    }else{
-        echo "failed";
+function ygc_save_settings_ajax() {
+    // Verify nonce for security
+    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'ygc_settings_action')) {
+        wp_send_json_error(array('message' => 'Security check failed'));
+        wp_die();
     }
+
+    // Check user permissions
+    if (!current_user_can('manage_options')) {
+        wp_send_json_error(array('message' => 'Insufficient permissions'));
+        wp_die();
+    }
+
+    // Save widget_uid
+    if (isset($_POST['widget_uid'])) {
+        update_option('widget_uid', sanitize_text_field($_POST['widget_uid']));
+    }
+
+    // Save chatbot admin enabled (from checkbox directly)
+    $chatbot_admin_enabled = isset($_POST['chatbot_admin_enabled']) && $_POST['chatbot_admin_enabled'] === '1' ? '1' : '0';
+    update_option('chatbot_admin_enabled', $chatbot_admin_enabled);
+
+    // Save search widget ID
+    if (isset($_POST['search_widget_id'])) {
+        update_option('search_widget_id', sanitize_text_field($_POST['search_widget_id']));
+    }
+
+    // Save search widget type
+    if (isset($_POST['search_widget_type'])) {
+        $allowed_types = array('floating', 'inplace', 'click');
+        $widget_type = sanitize_text_field($_POST['search_widget_type']);
+        if (in_array($widget_type, $allowed_types)) {
+            update_option('search_widget_type', $widget_type);
+        }
+    }
+
+    // Save search admin enabled (from checkbox directly)
+    $search_admin_enabled = isset($_POST['search_admin_enabled']) && $_POST['search_admin_enabled'] === '1' ? '1' : '0';
+    update_option('search_admin_enabled', $search_admin_enabled);
+
+    // Return success response
+    wp_send_json_success(array(
+        'message' => 'Settings saved successfully!',
+        'saved_values' => array(
+            'widget_uid' => get_option('widget_uid'),
+            'chatbot_admin_enabled' => get_option('chatbot_admin_enabled'),
+            'search_widget_id' => get_option('search_widget_id'),
+            'search_widget_type' => get_option('search_widget_type'),
+            'search_admin_enabled' => get_option('search_admin_enabled')
+        )
+    ));
+
     wp_die();
 }

@@ -1,8 +1,10 @@
-=== YourGPT Chatbot ===
-Plugin Name:       Your AI Chatbot
+=== YourGPT Chatbot - AI chatbot, AI helpdesk, AI Automation and more ===
+Plugin Name:       YourGPT Chatbot
+Tested up to:      6.7
+Stable Tag:        1.0.2
 Plugin URI:        https://yourgpt.ai/chatbot
-Description:       ChatGPT chatbot for your WordPress Website. Take your WordPress Site to the next level with YourGPT Chatbot - 24/7 AI Assistant Chatbot for Customer Support!
-Version:           1.0.0
+Description:       YourGPT chatbot for your WordPress Website. Take your WordPress Site to the next level with YourGPT Chatbot - 24/7 AI Assistant Chatbot for Customer Support!
+Version:           1.0.2
 Requires at least: 5.2
 Requires PHP:      7.2
 Author:            YourGPT Team
@@ -29,27 +31,31 @@ Experience the future of personalized customer engagement and gain a competitive
 
 Boost your WordPress site with YourGPT Chatbot today and lead the way to success! 🚀🤖
 
-#### POWERFUL FEATURES
-#### No-Code Chatbot Builder:
+## POWERFUL FEATURES
+### No-Code Chatbot Builder: 🤖
 Build and deploy your own chatbot without any coding knowledge required. Our intuitive interface allows you to create a customized chatbot that perfectly fits your needs.
 
-#### Powered by the Latest GPT Models:
+### Powered by the Latest GPT Models: 🚀
 Leverage the most advanced and up-to-date GPT models to ensure that your chatbot delivers high-quality responses and engages your users intelligently.
 
-#### Trained on Your Data:
+### Trained on Your Data: 📊
 Achieve a personalized touch with YourGPT Chatbot by training it on your specific data. Tailor the responses to match your brand's tone and style effortlessly.
 
-#### Lead Generation:
+### Lead Generation: 📈
 Boost your business growth with our chatbot's lead generation capabilities. Capture and nurture leads seamlessly, increasing your conversion rates.
 
-#### Multilingual Support:
+### Multilingual Support: 🌍
 Expand your reach to a global audience with multilingual chatbot support. Communicate with users from different regions in their preferred language.
 
-#### 24/7 Availability:
+### 24/7 Availability: ⏰
 Deliver exceptional customer support around the clock. YourGPT Chatbot is available 24/7, ensuring that your users get timely assistance whenever they need it.
 
-#### Scalability:
-No matter how big your website grows, our chatbot solution can handle it. Experience hassle-free scalability to accommodate increasing user interactions effortlessly.
+### AI Helpdesk: 📞
+Combine AI-powered support with on-demand human assistance, ensuring customers always receive the help they need.
+
+### Omnichannel Integrations: 🔗
+Integrate YourGPT Chatbot on omnichannel platforms like WhatsApp, Messenger, Instagram, Telegram, Slack, and more.
+
 
 checkout: [YourGPT Chatbot](https://yourgpt.ai/chatbot/) 
 

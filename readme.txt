@@ -1,6 +1,6 @@
 === YourGPT Chatbot - AI chatbot, AI helpdesk, AI Automation and more ===
 Plugin Name:       YourGPT Chatbot
-Tested up to:      6.7
+Tested up to:      7.1
 Stable Tag:        1.0.4
 Plugin URI:        https://yourgpt.ai/chatbot
 Description:       YourGPT chatbot for your WordPress Website. Take your WordPress Site to the next level with YourGPT Chatbot - 24/7 AI Assistant Chatbot for Customer Support!

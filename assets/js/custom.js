@@ -15,10 +15,7 @@ jQuery(function ($) {
             action: "save_ygc_settings_ajax",
             nonce: $('#ygc_settings_nonce').val(),
             widget_uid: form.widget_uid ? form.widget_uid.value : '',
-            chatbot_admin_enabled: form.chatbot_admin_enabled && form.chatbot_admin_enabled.checked ? '1' : '0',
-            search_widget_id: form.search_widget_id ? form.search_widget_id.value : '',
-            search_widget_type: form.search_widget_type ? form.search_widget_type.value : 'floating',
-            search_admin_enabled: form.search_admin_enabled && form.search_admin_enabled.checked ? '1' : '0'
+            chatbot_admin_enabled: form.chatbot_admin_enabled && form.chatbot_admin_enabled.checked ? '1' : '0'
         };
 
         console.log('Form Data:', formData);

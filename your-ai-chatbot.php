@@ -307,8 +307,9 @@ function plugin_menu_option_func()
                             <strong>Good to know</strong>
                             <p>
                                 The chatbot appears on all frontend pages automatically once you save the Widget UID.
-                                Widget appearance and layout (including the search layout) are configured from the
-                                <a href="<?php echo esc_url($dashboard_url); ?>" target="_blank" rel="noopener noreferrer">YourGPT Dashboard</a>.
+                                Widget appearance and layout are configured from the
+                                <a href="<?php echo esc_url($dashboard_url); ?>" target="_blank" rel="noopener noreferrer">YourGPT Dashboard</a>
+                                &rarr; <strong>Widget</strong> &rarr; <strong>Layout</strong>.
                             </p>
                         </div>
                     </div>

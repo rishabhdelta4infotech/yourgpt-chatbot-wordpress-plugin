@@ -49,6 +49,36 @@ function my_admin_js_script($hook)
         )
     );
 }
+/**
+ * Legacy search widget (pre-1.0.6).
+ *
+ * The Search Widget settings tab was removed in 1.0.6 — search is now a layout of the
+ * main widget, configured from the YourGPT Dashboard. Sites that saved a search widget
+ * UID before upgrading keep working: if the option is still in the database we inject
+ * the old script exactly as before. There is no UI for this; it can be dropped later.
+ */
+function ygc_legacy_search_widget_script()
+{
+    $search_widget_id = get_option('search_widget_id');
+    if (empty($search_widget_id)) {
+        return;
+    }
+    $search_widget_type = get_option('search_widget_type') ? get_option('search_widget_type') : 'floating';
+
+    echo '<script>
+  window.YGC_SEARCH_WIDGET = {
+    id: "'.esc_js($search_widget_id).'",
+    type: "'.esc_js($search_widget_type).'"
+  };
+  (function(){
+    var script=document.createElement("script");
+    script.src="https://search-widget.yourgpt.ai/script.js";
+    script.id="ygc-search-widget-script";
+    document.body.appendChild(script);
+  })();
+  </script>';
+}
+
 function add_html_script_to_frontend()
 {
     // Load main chatbot widget
@@ -62,6 +92,7 @@ function add_html_script_to_frontend()
   })();
   </script>';
 
+    ygc_legacy_search_widget_script();
 }
 
 function add_html_script_to_admin()
@@ -80,6 +111,10 @@ function add_html_script_to_admin()
   </script>';
     }
 
+    // Legacy search widget on admin pages, only if the user had enabled it before 1.0.6
+    if (get_option('search_admin_enabled') == '1') {
+        ygc_legacy_search_widget_script();
+    }
 }
 
 add_action('admin_footer', 'add_html_script_to_admin');

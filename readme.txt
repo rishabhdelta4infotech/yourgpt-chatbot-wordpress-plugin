@@ -259,7 +259,7 @@ The plugin's settings screen in the WordPress admin (Settings → YourGPT Chatbo
 
 = 1.0.6 =
 * Redesigned the settings screen.
-* Removed the separate Search Widget tab — the search layout is now configured from the YourGPT Dashboard (Widget → Layout).
+* Removed the separate Search Widget tab — the search layout is now configured from the YourGPT Dashboard (Widget → Layout). Sites that already had a search widget configured keep working unchanged.
 * Widget UID is now validated before saving.
 * Added WordPress and WooCommerce demo videos to the settings screen.
 * Plugin assets are no longer loaded on the public site.
